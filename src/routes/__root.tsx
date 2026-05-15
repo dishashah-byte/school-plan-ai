@@ -72,11 +72,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "IRV Engine — Andhra Pradesh School Infrastructure" },
+      { name: "description", content: "AI-powered Infrastructure Reasoning & Validation Engine for the Andhra Pradesh Department of School Education." },
+      { name: "author", content: "AP Dept. of School Education" },
+      { property: "og:title", content: "IRV Engine — School Infrastructure Planning" },
+      { property: "og:description", content: "Explainable AI for school infrastructure planning, validation and forecasting." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -108,12 +108,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { AppSidebar } from "@/components/app-sidebar";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="flex min-h-screen w-full bg-background">
+        <AppSidebar />
+        <div className="flex-1 min-w-0 flex flex-col">
+          <Outlet />
+        </div>
+      </div>
     </QueryClientProvider>
   );
 }
